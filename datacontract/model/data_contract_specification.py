@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 import pydantic as pyd
 import yaml
@@ -187,10 +187,10 @@ class Field(pyd.BaseModel):
 
 
 class Model(pyd.BaseModel):
-    description: Optional[str] = None
-    type: Optional[str] = None
-    namespace: Optional[str] = None
-    title: Optional[str] = None
+    description: str | None = None
+    type: str | None = None
+    namespace: str | None = None
+    title: str | None = None
     fields: Dict[str, Field] = {}
     quality: List[Quality] | None = []
     primaryKey: List[str] | None = []
@@ -230,59 +230,59 @@ class DeprecatedQuality(pyd.BaseModel):
 
 
 class Availability(pyd.BaseModel):
-    description: Optional[str] = None
-    percentage: Optional[str] = None
+    description: str | None = None
+    percentage: str | None = None
 
 
 class Retention(pyd.BaseModel):
-    description: Optional[str] = None
-    period: Optional[str] = None
-    unlimited: Optional[bool] = None
-    timestampField: Optional[str] = None
+    description: str | None = None
+    period: str | None = None
+    unlimited: bool | None = None
+    timestampField: str | None = None
 
 
 class Latency(pyd.BaseModel):
-    description: Optional[str] = None
-    threshold: Optional[str] = None
-    sourceTimestampField: Optional[str] = None
-    processedTimestampField: Optional[str] = None
+    description: str | None = None
+    threshold: str | None = None
+    sourceTimestampField: str | None = None
+    processedTimestampField: str | None = None
 
 
 class Freshness(pyd.BaseModel):
-    description: Optional[str] = None
-    threshold: Optional[str] = None
-    timestampField: Optional[str] = None
+    description: str | None = None
+    threshold: str | None = None
+    timestampField: str | None = None
 
 
 class Frequency(pyd.BaseModel):
-    description: Optional[str] = None
-    type: Optional[str] = None
-    interval: Optional[str] = None
-    cron: Optional[str] = None
+    description: str | None = None
+    type: str | None = None
+    interval: str | None = None
+    cron: str | None = None
 
 
 class Support(pyd.BaseModel):
-    description: Optional[str] = None
-    time: Optional[str] = None
-    responseTime: Optional[str] = None
+    description: str | None = None
+    time: str | None = None
+    responseTime: str | None = None
 
 
 class Backup(pyd.BaseModel):
-    description: Optional[str] = None
-    interval: Optional[str] = None
-    cron: Optional[str] = None
-    recoveryTime: Optional[str] = None
-    recoveryPoint: Optional[str] = None
+    description: str | None = None
+    interval: str | None = None
+    cron: str | None = None
+    recoveryTime: str | None = None
+    recoveryPoint: str | None = None
 
 
 class ServiceLevel(pyd.BaseModel):
-    availability: Optional[Availability] = None
-    retention: Optional[Retention] = None
-    latency: Optional[Latency] = None
-    freshness: Optional[Freshness] = None
-    frequency: Optional[Frequency] = None
-    support: Optional[Support] = None
-    backup: Optional[Backup] = None
+    availability: Availability | None = None
+    retention: Retention | None = None
+    latency: Latency | None = None
+    freshness: Freshness | None = None
+    frequency: Frequency | None = None
+    support: Support | None = None
+    backup: Backup | None = None
 
 
 class DataContractSpecification(pyd.BaseModel):
@@ -301,7 +301,7 @@ class DataContractSpecification(pyd.BaseModel):
         default=None,
         deprecated="Removed in Data Contract Specification v1.1.0. Use " "model-level and field-level quality instead.",
     )
-    servicelevels: Optional[ServiceLevel] = None
+    servicelevels: ServiceLevel | None = None
     links: Dict[str, str] = {}
     tags: List[str] = []
 
